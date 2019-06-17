@@ -1,0 +1,30 @@
+.wrapper {
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.wIcon {
+    width: 50px;
+}
+
+.input {
+    margin: 5px;
+}
+
+.button {
+    margin: 0px 5px 5px 5px;
+}
+

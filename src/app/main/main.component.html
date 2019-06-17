@@ -1,0 +1,60 @@
+<app-header></app-header>
+<div class="wrapper" >
+  <div class="ui container">
+    <div class="ui input focus input">
+      <input placeholder="City" type="text" [(ngModel)]="city" #input (blur)="input.value=''"
+        (keyup.enter)="search(); input.value=''">
+    </div>
+    <div>
+      <button class="ui primary button" (click)="search()">
+        Search
+      </button>
+    </div>
+    <div *ngIf="response" class="ui segments">
+      <div class="ui segment">
+        <h3>Weather in {{ response.name }}</h3>
+      </div>
+      <div class="ui horizontal segments">
+        <div class="ui segment">
+          <img src="https://img.icons8.com/ios/50/000000/temperature-filled.png" class="wIcon">
+          <div>{{ temp | number: '1.0-0' }} ℃</div>
+        </div>
+        <div class="ui segment">
+          <img src="https://img.icons8.com/ios/50/000000/clouds-filled.png" class="wIcon">
+          <div>{{ response.weather[0].main}}</div>
+        </div>
+        <div class="ui segment">
+          <img src="https://img.icons8.com/cotton/64/000000/windy-weather.png" class="wIcon">
+          <div>{{ response.wind.speed }} м/с</div>
+        </div>
+        <div class="ui segment">
+          <img src="https://img.icons8.com/ios/50/000000/humidity.png" class="wIcon">
+          <div>{{ response.main.humidity}} %</div>
+        </div>
+        <div class="ui segment">
+          <img src="https://img.icons8.com/material/52/000000/sunrise.png" class="wIcon">
+          <div>{{ sunrise }}</div>
+        </div>
+        <div class="ui segment">
+          <img src="https://img.icons8.com/material/52/000000/sunset.png" class="wIcon">
+          <div>{{ sunset }}</div>
+        </div>
+      </div>
+      <div class="ui segment">{{ date }}</div>
+      <div *ngIf="!fav.state" class="ui icon button" data-tooltip="Add to favorite" data-position="top left"
+        (click)="addFav(response.name, temp, response.weather[0].main, response.wind.speed, response.main.humidity, sunrise, sunset, date)">
+        <i class="heart outline icon"></i>
+      </div>
+      <div *ngIf="fav.state" class="ui icon button" data-tooltip="Go to favorites" data-position="top left"
+        routerLink="/favorite">
+        <i class="heart icon"></i>
+      </div>
+    </div>
+    <div *ngIf="error" class="">
+      <div class="ui center aligned segment">
+        {{error.error.message | uppercase}}
+      </div>
+    </div>
+  </div>
+</div>
+

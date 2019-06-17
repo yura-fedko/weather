@@ -1,0 +1,12 @@
+
+  <div id="header" class="ui vertical labeled icon menu">
+    <a class="item" routerLink="">
+        <i class="home icon" ></i>
+      Home
+    </a>
+    <a class="item" routerLink="/favorite" >
+        <i *ngIf="togle.state" class="heart icon" ></i>
+        <i *ngIf="!togle.state" class="heart icon outline icon" ></i>
+      Favorite      
+    </a>  
+  </div>
